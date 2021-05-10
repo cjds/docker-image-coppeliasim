@@ -1,3 +1,4 @@
+#!/bin/bash
 COPPELIASIM_RELEASE=CoppeliaSim_Edu_V4_2_0_Ubuntu18_04.tar.xz
 if [ ! -f download/$COPPELIASIM_RELEASE ]; then
     if [ "$1" = "-d" ]; then

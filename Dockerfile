@@ -22,5 +22,12 @@ ENV LD_LIBRARY_PATH=$COPPELIASIM_ROOT_DIR:$LD_LIBRARY_PATH
 ENV PATH=$COPPELIASIM_ROOT_DIR:$PATH
 
 RUN echo '#!/bin/bash\ncd $COPPELIASIM_ROOT_DIR; coppeliaSim "$@"' > /entrypoint && chmod a+x /entrypoint
+
+# Customized by CARL
+RUN apt-get update -q && \
+    apt install -y python3.8 && \
+    apt-get autoclean -y && apt-get autoremove -y && apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 EXPOSE 19997
 ENTRYPOINT ["/entrypoint"]
